@@ -1,3 +1,6 @@
+
+// Lós metodos van dentro de Meteor.methods ya que utilizamos Meteor para desarrollar el juego
+
 var ArrPartidas = {} // En esta coleccion guardamos las id de todas las partidas
 
 
@@ -203,4 +206,3 @@ Meteor.methods({
         return [Piezanueva.tipo, jugador[1].giros, jugador[1].coorx, jugador[1].coory, Tablero.listaJugadores, nuevoSeguidor.tipoSeguidor, nuevoSeguidor.PosEnFicha]
     }
 });
-
