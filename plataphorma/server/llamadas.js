@@ -3,10 +3,8 @@
 
 var ArrPartidas = {} // En esta coleccion guardamos las id de todas las partidas
 
-
-Meteor.methods({
 	//Crea una nueva partida, devuelve true si se consiguio false si no
-	nuevaPartida: function(id_game){
+	nuevaPartida= function(id_game){
 		if(ArrPartidas[id_game]== undefined){
 			Partida = new Tablero(id_game);
 			ArrPartidas[id_game]= Partida;
@@ -15,14 +13,14 @@ Meteor.methods({
 			console.log("Esa id ya pertenece a una partida creada");
 			return false;
 		}
-	},
+	}
 
 	//Los jugadores se añaden de uno en 1 y solo se podran meter en partidas ya creadas devuelve true si se consiguio, false si no
 	
 	/*Se comprueba que la partida tiene menos de 5 jugadores entre las IAS y los jugadores reales, se devuelve false si
 	  el numero excede el maximo. Se devuelve la lista de jugadores si es correcto. Ademas elige aleatoriamente quien
 	  comienza el juego */
-	comenzar: function(id_game,jugadores,nIAs){
+	comenzar= function(id_game,jugadores,nIAs){
 		if(ArrPartidas[id_game]){
 			Partida= ArrPartidas[id_game];
 			if(jugadores.length+nIAs<=5)
@@ -43,8 +41,10 @@ Meteor.methods({
 				return false;
 			}
 		}
-	},
+	}
 
+
+Meteor.methods({
 
 	//Roba una ficha, si id = id_game es un juego existente, devuelve la ficha
 	// y las posicones donde se pueden colocar, si no devuelve false, si no quedan piezas que extraer devuelve undefined

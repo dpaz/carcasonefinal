@@ -541,6 +541,22 @@ Template.crearpartida.events = {
               alert("QUE COMIENCE LA PARTIDA!!!!!");
               Rooms.update({_id:rooms._id},{ $set: {start:true} });
               Session.set("playing",true)
+              Session.set("playing",true)
+              var players= JoinPlayer.find({id_room:rooms._id},{})
+              var idsPlayers=[];
+              players.forEach(function(element){
+                var objaux=[];
+                if(element.user_name!="IA"){
+                  objaux[0]=element.originalID;
+                  objaux[1]=element.user_name;
+                }else{
+                  objaux[0]=element._id;
+                  objaux[1]=element.user_name;
+                }
+                idsPlayers.push(objaux)
+              })
+              console.log(idsPlayers)
+              Meteor.call("matchInit",rooms._id,idsPlayers);
               //**************************************************************************\\
               //Esto lo pongo como auxiliar, pero hay que quitarlo y usar un tracker autorun
               $("#crs").slideUp("slow")
@@ -643,7 +659,7 @@ Template.unirspartida.events={
             if(room.max_players==(room.in_players+room.max_IAs)){
               alert("QUE COMIENCE LA PARTIDA!!!!!");
               Rooms.update({_id:room._id},{ $set: {start:true} });
-              Session.set("playing",true)
+              //comenzarpartida(room._id)
               //**************************************************************************\\
               //Esto lo pongo como auxiliar, pero hay que quitarlo y usar un tracker autorun
               $("#crs").slideUp("slow")

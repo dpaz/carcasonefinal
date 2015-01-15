@@ -168,6 +168,11 @@ Meteor.methods({
     			Meteor.users.update({_id:this.userId}, { $inc: { total_points: -50 , dropouts: +1 } });
     		}
     	}
+    },
+    matchInit: function(room,players){
+        console.log(room)
+        nuevaPartida(room)
+        console.log(comenzar(room,players))
     }
 });
 
