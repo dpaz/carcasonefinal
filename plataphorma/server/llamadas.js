@@ -130,6 +130,7 @@ Meteor.methods({
             }
     	for (i=0; i< Tablero.listaJugadores.length; i++){
 			puntuacion.push({user_id: Partida.listaJugadores[i].id.user_id, puntos: Partida.listaJugadores[i].puntos});
+		    Meteor.call("matchFinish", puntuacion);
 		}
 
 	    } else {

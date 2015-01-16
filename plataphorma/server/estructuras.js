@@ -26,8 +26,7 @@ var TPiezas = {
 
 }
 
-
-var Jugador = function(user_id,nombre){
+Jugador = function(user_id,nombre){
 	this.puntuacion = 0;
 	this.nombre = nombre;
 	this.seguidores = 7;
@@ -35,7 +34,7 @@ var Jugador = function(user_id,nombre){
 	this.IA = false;
 }
 
-var Piezas = function(piezas,npiezas){	
+Piezas = function(piezas,npiezas){	
 	//Tipos de pieza
 	this.piezas =piezas || Object.keys(TPiezas)
 	//Numero de piezas por Tipo
@@ -55,7 +54,7 @@ var Seguidor = function(posicion,tipo, jugador){
 	this.jugador = jugador || undefined;
 }
 
-var Pieza = function(tipo,x,y){
+Pieza = function(tipo,x,y){
 
 	if(x!=undefined){
 		this.x=x
@@ -105,7 +104,7 @@ var Coor = function(x,y){
 	}
 }
 
-var Tablero = function(id_game, npiezas, piezas){
+ Tablero = function(id_game, npiezas, piezas){
 	this.id_game = id_game;
         this.listaJugadores = [];	
         this.turno = 0;
